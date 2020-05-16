@@ -7,7 +7,7 @@ def board():
     print('-' + '|' + '-' + '|' + '-')
     print('1' + '|' + '2' + '|' + '3')
 
-def player_input():
+def player_marker():
 
     player1 = ''
     player2 = ''
@@ -22,6 +22,6 @@ def player_input():
 
     return (player1, player2)
 
-player1, player2 = player_input()
+player1, player2 = player_marker()
 
 print((player1, player2))
