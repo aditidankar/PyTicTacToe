@@ -43,6 +43,9 @@ def play():
     marker = player1
     player = 'Player 1'
 
+    print('\nPress the number corresponding to the grid below where you want to place your marker:')
+    display_board([1,2,3,4,5,6,7,8,9])
+
     while len(position_list) != 9:
         position = int(input_position(player))
         board.pop(position-1)
