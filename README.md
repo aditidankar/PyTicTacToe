@@ -24,5 +24,5 @@ Tic-tac-toe (American English), noughts and crosses (British English), or Xs and
             1|2|3
 
   - To play the game, the players need to enter the numbers corresponding to the grid numbers shown in the above figure to mark their move
-  - After each move the board will be printed out to show their move on the grid
-  - The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row will be the winner
+  - After each move the updated board will be printed out to show their move on the grid
+  - The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row will win
