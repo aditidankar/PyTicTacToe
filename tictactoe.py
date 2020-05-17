@@ -1,8 +1,9 @@
 # This is a simple tic-tac-toe implemented using Python
+print('Welcome to Tic Tac Toe!')
 
 position_list = []
 
-def board():
+def display_board():
 
     print('\n')
     print('7' + '|' + '8' + '|' + '9')
@@ -33,13 +34,29 @@ def play():
 
     player1, player2 = player_marker()
 
+    board = []
+
+    marker = player1
+
     while len(position_list) != 9:
         position = input_position()
+        board.append(marker)
 
-    # board()
+        place_marker(board, marker, position)
 
-    playagain = input('Do you want to play again? Enter Yes or No: ')
-    replay(playagain)
+        if marker == player1:
+            marker = player2
+        else:
+            marker = player1
+
+    print(board)
+    replay(board)
+
+
+def place_marker(board, marker, position):
+
+    pass
+
 
 def input_position():
 
@@ -71,9 +88,12 @@ def check_position(position, cond):
     return False
 
 
-def replay(playagain):
+def replay(board):
     position_list.clear()
+    board.clear()
     # del position_list[:]
+
+    playagain = input('Do you want to play again? Enter Yes or No: ')
 
     if playagain == 'yes' or playagain == 'Yes':
         print('Restarting the game')
