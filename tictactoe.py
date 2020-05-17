@@ -3,14 +3,14 @@ print('Welcome to Tic Tac Toe!')
 
 position_list = []
 
-def display_board():
+def display_board(board):
 
     print('\n')
-    print('7' + '|' + '8' + '|' + '9')
+    print(f'{board[6]}|{board[7]}|{board[8]}')
     print('-' + '|' + '-' + '|' + '-')
-    print('4' + '|' + '5' + '|' + '6')
+    print(f'{board[3]}|{board[4]}|{board[5]}')
     print('-' + '|' + '-' + '|' + '-')
-    print('1' + '|' + '2' + '|' + '3')
+    print(f'{board[0]}|{board[1]}|{board[2]}')
     print('\n')
 
 
@@ -34,37 +34,40 @@ def play():
 
     player1, player2 = player_marker()
 
-    board = []
+    board = [' ']*9
 
     marker = player1
+    player = 'player1'
 
     while len(position_list) != 9:
-        position = input_position()
-        board.append(marker)
+        position = int(input_position(player))
+        board.pop(position-1)
+        board.insert(position-1, marker)
 
-        place_marker(board, marker, position)
+        display_board(board)
 
         if marker == player1:
             marker = player2
+            player = 'player2'
         else:
             marker = player1
+            player = 'player1'
 
-    print(board)
+    # print(board)
     replay(board)
 
 
-def place_marker(board, marker, position):
 
-    pass
-
-
-def input_position():
+def input_position(player):
 
     cond = True
 
     while cond:
         try :
-            position = int(input('Please enter a position number: '))
+            if player == 'player1':
+                position = int(input('Player 1, please enter a position number: '))
+            else:
+                position = int(input('Player 2, please enter a position number: '))
             cond = check_position(position, cond)
 
         except :
