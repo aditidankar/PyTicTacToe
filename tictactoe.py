@@ -1,5 +1,5 @@
 # This is a simple tic-tac-toe implemented using Python
-print('Welcome to Tic Tac Toe!')
+print('\nWelcome to Tic Tac Toe!\n')
 
 position_list = []
 
@@ -22,6 +22,10 @@ def player_marker():
     while player1 != 'x' and player1 != 'o':
         player1 = input("Player 1, please pick a marker x or o: ")
 
+        if player1 == 'quit' or player1 == 'exit' or player1 == 'Quit' or player1 == 'Exit' or player1 == 'QUIT' or player1 == 'EXIT':
+            print(f'\nYou entered {player1}\n\nQuitting the game\n\n')
+            quit()
+
     if player1 == 'x':
         player2 = 'o'
     else:
@@ -37,7 +41,7 @@ def play():
     board = [' ']*9
 
     marker = player1
-    player = 'player1'
+    player = 'Player 1'
 
     while len(position_list) != 9:
         position = int(input_position(player))
@@ -46,17 +50,52 @@ def play():
 
         display_board(board)
 
+        win = check_win(board, marker, player)
+
+        if win:
+            break
+
         if marker == player1:
             marker = player2
-            player = 'player2'
+            player = 'Player 2'
         else:
             marker = player1
-            player = 'player1'
+            player = 'Player 1'
+
+    if not win:
+        print('The game was a tie!\n')
 
     # print(board)
     replay(board)
 
 
+def check_win(board, marker, player):
+    if board[0] == marker and board[1] == marker and board[2] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    elif board[3] == marker and board[4] == marker and board[5] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    elif board[6] == marker and board[7] == marker and board[8] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    elif board[0] == marker and board[3] == marker and board[6] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    elif board[1] == marker and board[4] == marker and board[7] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    elif board[2] == marker and board[5] == marker and board[8] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    elif board[0] == marker and board[4] == marker and board[8] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    elif board[2] == marker and board[4] == marker and board[6] == marker:
+        print(f'{player} wins!\n\n')
+        return True
+    else:
+        return False
 
 def input_position(player):
 
@@ -64,14 +103,11 @@ def input_position(player):
 
     while cond:
         try :
-            if player == 'player1':
-                position = int(input('Player 1, please enter a position number: '))
-            else:
-                position = int(input('Player 2, please enter a position number: '))
+            position = int(input(f'{player}, please enter a position number: '))
             cond = check_position(position, cond)
 
         except :
-            print("Enter numeric value between 1 and 9")
+            print("\nEnter numeric value between 1 and 9\n")
             cond = True
 
     position_list.append(position)
@@ -81,11 +117,11 @@ def input_position(player):
 def check_position(position, cond):
 
     if position in position_list:
-        print('Position already entered')
+        print('\nPosition already entered\n')
         return True
 
     if int(position) < 1 or int(position) > 9:
-        print('Position out of range, please enter a position between 1 and 9')
+        print('\nPosition out of range, please enter a position between 1 and 9\n')
         return True
 
     return False
@@ -98,15 +134,15 @@ def replay(board):
 
     playagain = input('Do you want to play again? Enter Yes or No: ')
 
-    if playagain == 'yes' or playagain == 'Yes':
-        print('Restarting the game')
+    if playagain == 'y' or playagain == 'Y' or playagain == 'yes' or playagain == 'Yes':
+        print('\nRestarting the game\n\n')
         play()
-    elif playagain == 'no' or playagain == 'No':
-        print('Stopping the game')
+    elif playagain == 'n' or playagain == 'N' or playagain == 'no' or playagain == 'No':
+        print('\nStopping the game\n\n')
         quit()
     else:
-        print('Your answer does not match the options')
-        print('Stopping the game')
+        print('\nYour answer does not match the options')
+        print('\nStopping the game\n\n')
         quit()
 
 play()
