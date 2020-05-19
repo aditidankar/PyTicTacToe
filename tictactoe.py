@@ -73,28 +73,7 @@ def play():
 
 
 def check_win(board, marker, player):
-    if board[0] == marker and board[1] == marker and board[2] == marker:
-        print(f'{player} wins!\n\n')
-        return True
-    elif board[3] == marker and board[4] == marker and board[5] == marker:
-        print(f'{player} wins!\n\n')
-        return True
-    elif board[6] == marker and board[7] == marker and board[8] == marker:
-        print(f'{player} wins!\n\n')
-        return True
-    elif board[0] == marker and board[3] == marker and board[6] == marker:
-        print(f'{player} wins!\n\n')
-        return True
-    elif board[1] == marker and board[4] == marker and board[7] == marker:
-        print(f'{player} wins!\n\n')
-        return True
-    elif board[2] == marker and board[5] == marker and board[8] == marker:
-        print(f'{player} wins!\n\n')
-        return True
-    elif board[0] == marker and board[4] == marker and board[8] == marker:
-        print(f'{player} wins!\n\n')
-        return True
-    elif board[2] == marker and board[4] == marker and board[6] == marker:
+    if (board[0] == board[1] == board[2] == marker) or (board[3] == board[4] == board[5] == marker) or (board[6] == board[7] == board[8] == marker) or (board[0] == board[3] == board[6] == marker) or (board[1] == board[4] == board[7] == marker) or (board[2] == board[5] == board[8] == marker) or (board[0] == board[4] == board[8] == marker) or (board[2] == board[4] == board[6] == marker):
         print(f'{player} wins!\n\n')
         return True
     else:
